@@ -11,27 +11,10 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 
-import json
-
 import boto3
 
 # Create SQS client
 sqs = boto3.client('sqs')
 
-queue_url = 'SOURCE_QUEUE_URL'
-dead_letter_queue_arn = 'DEAD_LETTER_QUEUE_ARN'
-
-redrive_policy = {
-    'deadLetterTargetArn': dead_letter_queue_arn,
-    'maxReceiveCount': '10'
-}
-
-
-# Configure queue to send messages to dead letter queue
-sqs.set_queue_attributes(
-    QueueUrl=queue_url,
-    Attributes={
-        'RedrivePolicy': json.dumps(redrive_policy)
-    }
-)
- 
+# Delete SQS queue
+sqs.delete_queue(QueueUrl='https://sqs.us-east-1.amazonaws.com/716927497993/Picto-Test')

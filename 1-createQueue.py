@@ -1,4 +1,4 @@
-# Demonstrates how to create a queue
+# Demonstrates how to return the URL of an existing Amazon SQS queue.
 import boto3
 
 # Create SQS client
